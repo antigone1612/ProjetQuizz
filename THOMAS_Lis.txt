@@ -1,0 +1,25 @@
+La version de 9h50
+
+COTÉ BDD
+---------
+-Ajout des l'autoincrément pour les id (user et quizs)
+-Ajout des 60 charactère pour le mot de passe
+-Changement dans la table quizs, la catégorie devient une table appart entière
+
+COTÉ CODE
+---------
+-Creation de compte fonctionne avec hashage mot de passe
+-la mise en session marche mais pas encore pour l'inscription
+-on peut enregistrer les info d'un quizz (nom, idCategorie, description)
+-on peut enregistrer 1 questions et ces reponses, la je vais faire pour plusieurs questions.
+-enlever un z dans le lien vers la bdd , je l ai renomé avec un z en moins(normalement t as pas a le faire mais au cazou)
+
+La version de 17h40 le 10/02
+
+COTÉ BDD
+---------
+Changement de la strucutre pour permettre la création de quizz (ajout d'une table reponses)
+
+COTÉ CODE
+---------
+On peut crée un quizz, et renseigner les questions (questions générés avec une boucle donc on peut modifier), on peut dire qui est la bonne réponses et CA FONCTIONEEEE

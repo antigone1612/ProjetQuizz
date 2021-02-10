@@ -1,4 +1,10 @@
 <?php 
+//on vérifie que l'id du quizz est bien présent dans l'URL
+if(!isset($_GET["quizz"]) || empty($_GET["quizz"])){
+    header("location: index.php?IDQuiZZManquant");
+    exit;
+}
+$idQuizz = intval($_GET["quizz"]);
 $body = include("header.php");
 include "class/WebPage.class.php";
 $body .= 
@@ -8,26 +14,38 @@ $body .=
         <div class="row mt-5">
             <h4 class="justify-content-center mt-5">Créer un Quizz</h4>
         </div>
-        <form method="post"  class="cConteneur" action="verif_creationQuestions.php">
-            <div class="row mt-5">
-                <div class="col">
-                    <input type="text" class="form-control" name="Question" placeholder="Question1">
+HTML;
+         for( $i=0; $i<=3;$i++){
+$body.= 
+<<<HTML
+            <form method="post"  class="cConteneur" action="verif_creationQuestions.php">
+                <input type="hidden" name="idQuizz" value="$idQuizz" > 
+                <div class="row mt-5">
+                    <div class="col">
+                        <input type="text" class="form-control" name="Question[]" placeholder="Question1">
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="coding" name="choix[]" value="reponse1">
+                        <input type="text" class="form-control" name="reponse1[]" placeholder="Reponse1">
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="coding" name="choix[]" value="reponse2">
+                        <input type="text" class="form-control" name="reponse2[]" placeholder="Reponse2">
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="coding" name="choix[]" value="reponse3">
+                        <input type="text" class="form-control" name="reponse3[]" placeholder="Reponse3">
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="coding" name="choix[]" value="reponse4">
+                        <input type="text" class="form-control" name="reponse4[]" placeholder="Reponse4">
+                    </div>
                 </div>
-                <div class="col">
-                    <input type="text" class="form-control" name="reponse1" placeholder="Reponse1">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" name="reponse2" placeholder="Reponse2">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" name="reponse3" placeholder="Reponse3">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" name="reponse4" placeholder="Reponse4">
-                </div>
-            </div>
-            <input name="submit" class="btn btn-lg btn-primary btn-block marge bordure" type="submit" value="Créer">
-        </form>
+HTML;
+        }
+        $body .= <<<HTML
+                <input name="submit" class="btn btn-lg btn-primary btn-block marge bordure" type="submit" value="Créer">
+            </form>
     <div>
 HTML;
 

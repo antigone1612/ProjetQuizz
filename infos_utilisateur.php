@@ -1,5 +1,4 @@
 <?php 
-session_start();
 $body = include("header.php");
 include "class/WebPage.class.php";
 $body .= 

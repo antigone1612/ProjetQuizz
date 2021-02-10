@@ -1,6 +1,6 @@
 <?php
 include('class/MyPDO.class.php');
-MyPDO::setConfiguration('mysql:host=localhost;dbname=thequizzz;charset=utf8', 'root', '');
+MyPDO::setConfiguration('mysql:host=localhost;dbname=thequizz;charset=utf8', 'root', '');
 
 //créé un utilisateur en bdd
 function ajouterUtilisateur($nom,$prenom,$email,$motPass) {
@@ -23,6 +23,7 @@ function creationQuizz($titre, $Idcategorie, $description) {
     $pdo = MyPDO::getInstance();
     $requete = $pdo->prepare("INSERT INTO quizs(Titre, IdCategorie, Description) VALUES (?, ?, ?)");
     $requete -> execute(array($titre, $Idcategorie, $description));
+    return $pdo->lastInsertId();
 }
 
 //recupère les catégories des quizz
@@ -34,19 +35,26 @@ function recupererCategorie() {
     return $donnees;
 }
 
-//recupère le dernier idQuizz inséré en bdd
-function recupererLastId() {
+//inserer les questions en bdd
+function creationQuestions($idQuiz, $question) {
     $pdo = MyPDO::getInstance();
-    $requete = $pdo->prepare("SELECT MAX(IdQuiz) as IdQuiz FROM quizs");
-    $requete -> execute();
-    $donnees = $requete -> fetch();
-    return $donnees["IdQuiz"];
-
+    $requete = $pdo->prepare("INSERT INTO questions(IdQuiz,Question, IdBonneReponse) VALUES (?, ?, Null)");
+    $requete -> execute(array($idQuiz, $question));
+    return $pdo->lastInsertId();
 }
 
-//inserer les questions/reponses en bdd
-function creationQuestions($idQuiz, $question, $reponse1, $reponse2, $reponse3, $reponse4, $bonneReponse) {
+
+//insertion des reponses possibles
+function creationReponses($idQuestion, $reponse) {
     $pdo = MyPDO::getInstance();
-    $requete = $pdo->prepare("INSERT INTO questions(IdQuiz,Question, Reponse1, Reponse2, Reponse3, Reponse4, BonneReponse) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $requete -> execute(array($idQuiz, $question, $reponse1, $reponse2, $reponse3, $reponse4, $bonneReponse));
+    $requete = $pdo->prepare("INSERT INTO reponses(IdQuestion,Reponse) VALUES (?, ?)");
+    $requete -> execute(array($idQuestion, $reponse));
+    return $pdo->lastInsertId();
+}
+
+//Mise a jour de la bonne reponse
+function majBonneReponse($idQuestion, $idReponse) {
+    $pdo = MyPDO::getInstance();
+    $requete = $pdo->prepare("UPDATE questions SET IdBonneReponse = ? WHERE IdQuestion = ?");
+    $requete -> execute(array( $idReponse, $idQuestion));
 }

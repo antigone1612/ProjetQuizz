@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 09 fév. 2021 à 11:23
+-- Généré le :  mer. 10 fév. 2021 à 16:37
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `thequizzz`
+-- Base de données :  `thequizz`
 --
 
 -- --------------------------------------------------------
@@ -52,28 +52,22 @@ INSERT INTO `categories` (`IdCategorie`, `nom`) VALUES
 
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
-  `IdQuestion` int(10) NOT NULL,
+  `IdQuestion` int(10) NOT NULL AUTO_INCREMENT,
   `IdQuiz` int(10) DEFAULT NULL,
   `Question` varchar(200) DEFAULT NULL,
-  `Reponse1` varchar(50) DEFAULT NULL,
-  `Reponse2` varchar(50) DEFAULT NULL,
-  `Reponse3` varchar(50) DEFAULT NULL,
-  `Reponse4` varchar(50) DEFAULT NULL,
-  `BonneReponse` int(1) DEFAULT NULL,
+  `IdBonneReponse` int(10) DEFAULT NULL,
   PRIMARY KEY (`IdQuestion`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `questions`
 --
 
-INSERT INTO `questions` (`IdQuestion`, `IdQuiz`, `Question`, `Reponse1`, `Reponse2`, `Reponse3`, `Reponse4`, `BonneReponse`) VALUES
-(1, 1, 'Combien y a-t-il d\'especes de crocodiles ?', '20', '23', '17', '10', 2),
-(2, 1, 'Ce crocodile tue environ 1000 personnes par an. Lequel ?', 'Crocodile des marais', 'Le crocodile du Nil', 'Crocodile marin', 'Crocodile de Cuba', 3),
-(3, 1, 'En une fraction de seconde le crocodile du Nil peut faire un bond de ...', '3 mètres', '1,5 mètres', '2 mètres', '2,5 mètres', 4),
-(4, 2, 'Parmi ces personnages, lequel n\'a jamais fait une apparition (en étant jouable) dans un jeu avec Mario ?', 'Sacha (Pokémon)', 'Sonic', 'Samus Aran', 'Solid Snake', 1),
-(5, 2, 'Dans quel jeu retrouve-t-on un personnage appelé \'Le Lion Rouge\' ?', 'Mario 64', 'The Legend Of Zelda : The Wind Waker', 'Metroïd Prime', 'Donkey Kong Country', 2),
-(6, 2, 'Quelle est la ville natale de Sacha, dans Pokémon ?', 'Jadielle', 'PokéLand', 'Bourg Palette', 'Royaume Pokémon', 3);
+INSERT INTO `questions` (`IdQuestion`, `IdQuiz`, `Question`, `IdBonneReponse`) VALUES
+(12, 7, 'Sa viande préférée', 26),
+(13, 7, 'Sa place préférée dans son terrarium', 29),
+(11, 7, 'Le fruit à ne pas donner', 21),
+(10, 7, 'Sa salade préférée ?', 20);
 
 -- --------------------------------------------------------
 
@@ -88,14 +82,50 @@ CREATE TABLE IF NOT EXISTS `quizs` (
   `IdCategorie` int(10) DEFAULT NULL,
   `Description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`IdQuiz`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `quizs`
 --
 
 INSERT INTO `quizs` (`IdQuiz`, `Titre`, `IdCategorie`, `Description`) VALUES
-(1, 'QuizzzTest', 2, 'Le premier quizz que j\'arrive à enregistrer en bdd');
+(7, 'Peston à la plage', 1, 'Apprendre la vie de grenouille');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponses`
+--
+
+DROP TABLE IF EXISTS `reponses`;
+CREATE TABLE IF NOT EXISTS `reponses` (
+  `IdReponse` int(10) NOT NULL AUTO_INCREMENT,
+  `IdQuestion` int(10) NOT NULL,
+  `Reponse` varchar(200) NOT NULL,
+  PRIMARY KEY (`IdReponse`)
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `reponses`
+--
+
+INSERT INTO `reponses` (`IdReponse`, `IdQuestion`, `Reponse`) VALUES
+(22, 11, 'Figue'),
+(21, 11, 'Fruit Rouge'),
+(20, 10, 'Basilique'),
+(19, 10, 'Cresson'),
+(18, 10, 'Frisée'),
+(17, 10, 'Laitue'),
+(23, 11, 'Pomme'),
+(24, 11, 'Papaye'),
+(25, 12, 'Grillons'),
+(26, 12, 'Vers de farine'),
+(27, 12, 'Souris'),
+(28, 12, 'Thomas'),
+(29, 13, 'Sous la lampe'),
+(30, 13, 'Dans l\'eau'),
+(31, 13, 'Cabane'),
+(32, 13, 'Vitre');
 
 -- --------------------------------------------------------
 

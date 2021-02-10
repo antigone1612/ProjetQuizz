@@ -6,8 +6,8 @@
     $titre = $_POST["titre"];
     $description= $_POST["description"];
     $idcategorie = $_POST["IDcategorie"];
-    creationQuizz($titre, $idcategorie, $description);
-    header("location: creationQuestions.php");
+    $idQuizz = creationQuizz($titre, $idcategorie, $description);
+    header("location: creationQuestions.php?quizz=".$idQuizz);
   }
 
 else{
