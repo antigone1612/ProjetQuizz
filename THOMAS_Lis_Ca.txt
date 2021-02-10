@@ -1,0 +1,14 @@
+La version de 9h50
+
+COTÉ BDD
+---------
+-Ajout des l'autoincrément pour les id (user et quizs)
+-Ajout des 60 charactère pour le mot de passe
+-Changement dans la table quizs, la catégorie devient une table appart entière
+
+COTÉ CODE
+---------
+-Creation de compte fonctionne avec hashage mot de passe
+-la mise en session marche mais pas encore pour l'inscription
+-on peut enregistrer les info d'un quizz (nom, idCategorie, description)
+Je fais la partie question et la mise en forme plus tard .
