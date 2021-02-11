@@ -19,10 +19,10 @@ function recupererUtilisateur($mail) {
 }
 
 //créer un quizz en bdd
-function creationQuizz($titre, $Idcategorie, $description) {
+function creationQuizz($titre, $Idcategorie, $description, $IdUser) {
     $pdo = MyPDO::getInstance();
-    $requete = $pdo->prepare("INSERT INTO quizs(Titre, IdCategorie, Description) VALUES (?, ?, ?)");
-    $requete -> execute(array($titre, $Idcategorie, $description));
+    $requete = $pdo->prepare("INSERT INTO quizs(Titre, IdCategorie, Description, IdUser) VALUES (?, ?, ?, ?)");
+    $requete -> execute(array($titre, $Idcategorie, $description, $IdUser));
     return $pdo->lastInsertId();
 }
 
@@ -57,4 +57,13 @@ function majBonneReponse($idQuestion, $idReponse) {
     $pdo = MyPDO::getInstance();
     $requete = $pdo->prepare("UPDATE questions SET IdBonneReponse = ? WHERE IdQuestion = ?");
     $requete -> execute(array( $idReponse, $idQuestion));
+}
+
+//Récupérer les infos de l'utilisateurs
+function recupererInfosUtilisateurs($idUser) {
+    $pdo = MyPDO::getInstance();
+    $requete = $pdo->prepare("SELECT QuizsGagnes,QuizsJoues FROM users WHERE IdUser=?");
+    $requete -> execute(array($idUser));
+    $donnees = $requete -> fetchAll();
+    return $donnees;
 }

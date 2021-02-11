@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 10 fév. 2021 à 16:37
+-- Généré le :  jeu. 11 fév. 2021 à 18:06
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -57,17 +57,17 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `Question` varchar(200) DEFAULT NULL,
   `IdBonneReponse` int(10) DEFAULT NULL,
   PRIMARY KEY (`IdQuestion`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `questions`
 --
 
 INSERT INTO `questions` (`IdQuestion`, `IdQuiz`, `Question`, `IdBonneReponse`) VALUES
-(12, 7, 'Sa viande préférée', 26),
-(13, 7, 'Sa place préférée dans son terrarium', 29),
-(11, 7, 'Le fruit à ne pas donner', 21),
-(10, 7, 'Sa salade préférée ?', 20);
+(1, 9, 'Afficher une chaine de charactère', 3),
+(2, 9, 'Créer une variable', 5),
+(3, 9, 'Afficher les infos d\'une variable', 11),
+(4, 9, 'La mascotte du php', 15);
 
 -- --------------------------------------------------------
 
@@ -81,15 +81,16 @@ CREATE TABLE IF NOT EXISTS `quizs` (
   `Titre` varchar(30) DEFAULT NULL,
   `IdCategorie` int(10) DEFAULT NULL,
   `Description` varchar(200) DEFAULT NULL,
+  `IdUser` int(10) NOT NULL,
   PRIMARY KEY (`IdQuiz`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `quizs`
 --
 
-INSERT INTO `quizs` (`IdQuiz`, `Titre`, `IdCategorie`, `Description`) VALUES
-(7, 'Peston à la plage', 1, 'Apprendre la vie de grenouille');
+INSERT INTO `quizs` (`IdQuiz`, `Titre`, `IdCategorie`, `Description`, `IdUser`) VALUES
+(9, 'Php', 2, 'les bases du Php', 3);
 
 -- --------------------------------------------------------
 
@@ -103,29 +104,29 @@ CREATE TABLE IF NOT EXISTS `reponses` (
   `IdQuestion` int(10) NOT NULL,
   `Reponse` varchar(200) NOT NULL,
   PRIMARY KEY (`IdReponse`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `reponses`
 --
 
 INSERT INTO `reponses` (`IdReponse`, `IdQuestion`, `Reponse`) VALUES
-(22, 11, 'Figue'),
-(21, 11, 'Fruit Rouge'),
-(20, 10, 'Basilique'),
-(19, 10, 'Cresson'),
-(18, 10, 'Frisée'),
-(17, 10, 'Laitue'),
-(23, 11, 'Pomme'),
-(24, 11, 'Papaye'),
-(25, 12, 'Grillons'),
-(26, 12, 'Vers de farine'),
-(27, 12, 'Souris'),
-(28, 12, 'Thomas'),
-(29, 13, 'Sous la lampe'),
-(30, 13, 'Dans l\'eau'),
-(31, 13, 'Cabane'),
-(32, 13, 'Vitre');
+(1, 1, 'system out println'),
+(2, 1, 'print_r'),
+(3, 1, 'echo'),
+(4, 1, 'afficher()'),
+(5, 2, '$maVariable;'),
+(6, 2, 'String texte;'),
+(7, 2, 'var texte;'),
+(8, 2, 'texte'),
+(9, 3, 'echo'),
+(10, 3, 'die'),
+(11, 3, 'var_dump'),
+(12, 3, 'afficher()'),
+(13, 4, 'Rat'),
+(14, 4, 'Lézard'),
+(15, 4, 'Eléphant'),
+(16, 4, 'Souris');
 
 -- --------------------------------------------------------
 
@@ -143,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `QuizsGagnes` int(3) DEFAULT NULL,
   `QuizsJoues` int(3) DEFAULT NULL,
   PRIMARY KEY (`IdUser`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
@@ -151,9 +152,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`IdUser`, `Nom`, `Prenom`, `Mail`, `MotDePasse`, `QuizsGagnes`, `QuizsJoues`) VALUES
 (5, 'Pakloglou', 'Antigone', 'anti@gmail.com', '$2y$10$.TLwkJ8GlbNZ548MNDxEQOh.BlVxdYwY9vyW6Zu8uRCQucI6vnPpu', 0, 0),
-(3, 'Wastiau', 'Vinz', 'v.w@gmail.com', '$2y$10$O/In1luLO4Czmg7QeYwnG.wNTtDX4RN1ZbMPJy80hSTqWNSaSStby', 0, 0),
+(3, 'Wastiau', 'Vinz', 'v.w@gmail.com', '$2y$10$O/In1luLO4Czmg7QeYwnG.wNTtDX4RN1ZbMPJy80hSTqWNSaSStby', 3, 7),
 (6, 'thomas', 'Fredo', 'fred@gmail.com', '$2y$10$4wluHx/7GXvIB9IqTWoqO.N9LvrwgtWTZfTGlaS4Qg.Ux8alLOfwu', 0, 0),
-(7, 'PAKL', 'Gren', 'gre@gmail.com', '$2y$10$6A5k4.5XKLdVE6EztxDv9ORnSJP36UK4NcDKneBmnju.Y5pV.iiZK', 0, 0);
+(7, 'PAKL', 'Gren', 'gre@gmail.com', '$2y$10$6A5k4.5XKLdVE6EztxDv9ORnSJP36UK4NcDKneBmnju.Y5pV.iiZK', 0, 0),
+(8, 'Pakloglou', 'Antigone', 'antigone.pakloglou@estiam.com', '$2y$10$XczDUWyvxgjmkOGgrgTjqe.P9EHPXVeRmUIkOTaAqNNq2gO05akDO', 0, 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

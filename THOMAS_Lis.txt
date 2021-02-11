@@ -1,3 +1,27 @@
+La DERNIERE version de 19h10 le 11/02
+
+COTÉ BDD
+---------
+Ajout de l'IdUser dans la table Quizs pour récupérer le nbr de quizz crée par un joueur
+
+COTÉ CODE
+---------
+On peut maintenant enregistrer un quizz et ses question avec un choix UNIQUE de bonne reponses. On affiche avec les infos en bdd celles de l'utilisateur.
+
+--------------------------------------------------------------
+
+La version de 17h40 le 10/02
+
+COTÉ BDD
+---------
+Changement de la strucutre pour permettre la création de quizz (ajout d'une table reponses)
+
+COTÉ CODE
+---------
+On peut crée un quizz, et renseigner les questions (questions générés avec une boucle donc on peut modifier), on peut dire qui est la bonne réponses et CA FONCTIONEEEE
+Changement des formulaire connexion et inscription (utilisation de template bootstrap)
+------------------------------------------------------------
+
 La version de 9h50
 
 COTÉ BDD
@@ -14,12 +38,3 @@ COTÉ CODE
 -on peut enregistrer 1 questions et ces reponses, la je vais faire pour plusieurs questions.
 -enlever un z dans le lien vers la bdd , je l ai renomé avec un z en moins(normalement t as pas a le faire mais au cazou)
 
-La version de 17h40 le 10/02
-
-COTÉ BDD
----------
-Changement de la strucutre pour permettre la création de quizz (ajout d'une table reponses)
-
-COTÉ CODE
----------
-On peut crée un quizz, et renseigner les questions (questions générés avec une boucle donc on peut modifier), on peut dire qui est la bonne réponses et CA FONCTIONEEEE
