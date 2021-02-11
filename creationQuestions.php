@@ -25,19 +25,19 @@ $body.=
                         <input type="text" class="form-control" name="Question[]" placeholder="Question1">
                     </div>
                     <div class="col">
-                        <input type="checkbox" id="coding" name="choix[]" value="reponse1">
+                        <input type="radio" id="coding" name="choix[]" value="reponse1">
                         <input type="text" class="form-control" name="reponse1[]" placeholder="Reponse1">
                     </div>
                     <div class="col">
-                        <input type="checkbox" id="coding" name="choix[]" value="reponse2">
+                        <input type="radio" id="coding" name="choix[]" value="reponse2">
                         <input type="text" class="form-control" name="reponse2[]" placeholder="Reponse2">
                     </div>
                     <div class="col">
-                        <input type="checkbox" id="coding" name="choix[]" value="reponse3">
+                        <input type="radio" id="coding" name="choix[]" value="reponse3">
                         <input type="text" class="form-control" name="reponse3[]" placeholder="Reponse3">
                     </div>
                     <div class="col">
-                        <input type="checkbox" id="coding" name="choix[]" value="reponse4">
+                        <input type="radio" id="coding" name="choix[]" value="reponse4">
                         <input type="text" class="form-control" name="reponse4[]" placeholder="Reponse4">
                     </div>
                 </div>

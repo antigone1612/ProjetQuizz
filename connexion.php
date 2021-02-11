@@ -3,18 +3,41 @@ include "class/WebPage.class.php";
 $body = include("header.php"); 
 $body.= include("requettes.php");
 $body.= <<<HTML
-    <section class="cParallaxe1 cSection">
-        <div class="cConteneur">  
-        	<div class="wrapper ">
-            	<form style="opacity: 0.8;" class="form-signin" method="post" action="connexion.php">  <!-- ici action dit ou aller chercher le code PHP -->
-              		<img class="form-signin-heading" width="100" src="images/image-quizz.jpg" >
-              		<br>   
-              		<h1 class="centrer">Se connecter</h1>
-              		<input  type="email" class="form-control " name="mail" placeholder="email" >
-              		<input type="password" class="form-control " name="password" placeholder="Mot de Passe">      
-              		<input name="submit" class="btn btn-lg btn-primary btn-block marge bordure" type="submit" value="Connexion">
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="post" action="connexion.php">
+					<span class="login100-form-logo">
+					<img class="form-signin-heading" width="100" src="images/image-quizz.jpg" >
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Connexion
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="email" name="mail" placeholder="Email">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
 HTML;
-             
 if(isset($_POST['mail']) && isset($_POST['password']) && !empty($_POST['mail']) && !empty($_POST['password'])) {
 	foreach (recupererUtilisateur($_POST['mail']) as $donnee){
     	//on utilise password_verify pour comparer les hashs , celui du mot de pass saisie pour se connecter et celui en BDD
@@ -28,8 +51,7 @@ if(isset($_POST['mail']) && isset($_POST['password']) && !empty($_POST['mail']) 
 	}
 } else {
 	echo "Veuillez remplir correctement les logins";
-}            
-                
+}         
 $body .= <<<HTML
                 </form>
           	</div>
@@ -43,6 +65,16 @@ HTML;
 $page = new WebPage("Connexion");
 $page->appendContent($body);
 $page->appendCssUrl('CSS/style.css');
+$page->appendCssUrl('css/util.css');
+$page->appendCssUrl('css/main.css');
+$page->appendCssUrl('vendor/daterangepicker/daterangepicker.css');
+$page->appendCssUrl('vendor/select2/select2.min.css');
+$page->appendCssUrl('vendor/animsition/css/animsition.min.css');
+$page->appendCssUrl('vendor/css-hamburgers/hamburgers.min.css');
+$page->appendCssUrl('vendor/animate/animate.css');
+$page->appendCssUrl('fonts/iconic/css/material-design-iconic-font.min.css');
+$page->appendCssUrl('fonts/font-awesome-4.7.0/css/font-awesome.min.css');
+$page->appendCssUrl('vendor/bootstrap/css/bootstrap.min.css');
 $page->appendJsUrl("https://code.jquery.com/jquery-3.3.1.slim.min.js");
 $page->appendJsUrl("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js");
 $page->appendJsUrl("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js");

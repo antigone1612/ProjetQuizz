@@ -2,7 +2,7 @@
 session_start();
 //Navigation
 $html = <<<HTML
-<nav style="background-color:  #34B8E9" class="navbar navbar-expand-lg navbar-dark  fixed-top">
+<nav style="background-color:  #587AB0" class="navbar navbar-expand-lg navbar-dark  fixed-top">
     <div class="container">
         <a  style="font-size:26px;" class="navbar-brand" href="index.php">The Quizzz</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
