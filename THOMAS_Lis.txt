@@ -1,4 +1,10 @@
-La DERNIERE version de 19h10 le 11/02
+La DERNIERE Vertion dimanche 14/04 à 10h04
+Changement du visuelle de la partie création quizz, un peut moins moche, les inputs sont tous en required ce qui empeche la soumission du formulaire sans les valeur attendu.
+
+
+
+
+La version de 19h10 le 11/02
 
 COTÉ BDD
 ---------

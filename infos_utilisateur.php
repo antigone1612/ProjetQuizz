@@ -11,6 +11,10 @@ $quizsJoues = $donne['QuizsJoues'];
 //quizs gagnés par l'utilisateur
 $quizsGagnes = $donne['QuizsGagnes'];
 $nom = $_SESSION['nom'];
+//on récupère le nrb de quizz créer par l'utilisateur
+$nbrQuizz = recupererNbrQuizzUtilisateur($idUser)[0];
+$nbrQuizzCrea = $nbrQuizz['COUNT(*)'];
+var_dump($nbrQuizzCrea);
 $body .=  
 <<<HTML
 <div class="limiter">
@@ -31,7 +35,7 @@ $body .=
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Quizz créer
-                            <span class="badge bg-primary rounded-pill">$quizsGagnes</span>
+                            <span class="badge bg-primary rounded-pill">$nbrQuizzCrea</span>
                         </li>
                     </ul>
                 </div>

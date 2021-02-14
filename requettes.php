@@ -67,3 +67,12 @@ function recupererInfosUtilisateurs($idUser) {
     $donnees = $requete -> fetchAll();
     return $donnees;
 }
+
+//récupère le nbr de quizs créer par un utilisateur
+function recupererNbrQuizzUtilisateur($idUser) {
+    $pdo = MyPDO::getInstance();
+    $requete = $pdo->prepare("SELECT COUNT(*) FROM quizs WHERE IdUser=?");
+    $requete -> execute(array($idUser));
+    $donnees = $requete -> fetchAll();
+    return $donnees;
+}
