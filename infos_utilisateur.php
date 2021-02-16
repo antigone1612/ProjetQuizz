@@ -34,7 +34,7 @@ $body .=
                             <span class="badge bg-primary rounded-pill">$quizsGagnes</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Quizz créer
+                            Quizz créés
                             <span class="badge bg-primary rounded-pill">$nbrQuizzCrea</span>
                         </li>
                     </ul>

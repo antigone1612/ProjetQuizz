@@ -26,6 +26,15 @@ function creationQuizz($titre, $Idcategorie, $description, $IdUser) {
     return $pdo->lastInsertId();
 }
 
+//recupère les quizz en fonction de leur catégorie
+function recupererQuizzCategorie($categorie, $all) {
+    $pdo = MyPDO::getInstance();
+    $requete = $pdo->prepare("SELECT * FROM quizs WHERE IdCategorie = ? OR ?");
+    $requete -> execute(array($categorie, $all));
+    $donnees = $requete -> fetchAll();
+    return $donnees;
+}
+
 //recupère les catégories des quizz
 function recupererCategorie() {
     $pdo = MyPDO::getInstance();

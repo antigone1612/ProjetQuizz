@@ -10,11 +10,14 @@ $prenom = $_POST["prenom"];
 $email= $_POST["mail"];
 
 ajouterUtilisateur($nom,$prenom,$email,$motPass);
-//on envoie le nouvel inscrit sur la page de connexion
+//on crée la session du nouvel inscrti
+foreach (recupererUtilisateur($_POST['mail']) as $donnee){
         session_start();
         $_SESSION["IdUser"] = $donnee["IdUser"];
         $_SESSION["nom"] = $donnee["Prenom"];
         header("location: index.php");
+        exit();
+}
 }
 //sinon on lui affiche de nouveau la page d'inscription 
 else{header("location: inscription.php");

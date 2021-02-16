@@ -1,23 +1,29 @@
 <?php 
-//on vérifie que l'id du quizz est bien présent dans l'URL
-if(!isset($_GET["quizz"]) || empty($_GET["quizz"])){
-    header("location: index.php?IDQuiZZManquant");
+//on vérifie que les infos du quizz sont bien présent dans l'URL
+ if(!isset($_GET["titre"]) || empty($_GET["titre"]) && !isset($_GET["description"]) || empty($_GET["description"])  && !isset($_GET["IDcategorie"]) || empty($_GET["IDcategorie"]) ){
+    header("location: index.php?InfoQuizzManquantes");
     exit;
 }
-$idQuizz = intval($_GET["quizz"]);
+//on affecte les valeurs à nos variables
+$titre = $_GET["titre"]; 
+$description = $_GET["description"]; 
+$IdCategorie = intval($_GET["IDcategorie"]); 
+
 $body = include("header.php");
 include "class/WebPage.class.php";
 $body .= 
 <<<HTML
 <div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-			<div class="wrap-login1003">
+			<div class="wrap-login1000">
         <!--Création dun quizz par utilisateur-->
         <div class="row mt-5">
             <h4 class="justify-content-center mt-5">Créer les questions</h4>
         </div>
         <form method="post"  class="cConteneur" action="verif_creationQuestions.php">
-                <input type="hidden" name="idQuizz" value="$idQuizz" > 
+        <input type="hidden" name="titre" value=$titre>
+        <input type="hidden" name="description" value=$description>
+        <input type="hidden" name="IDcategorie" value=$IdCategorie>
 HTML;
          for( $i=0; $i<=3;$i++){
             //permet d'afficher dynamiquement le numéro de la question
@@ -93,8 +99,6 @@ $page->appendCssUrl('fonts/iconic/css/material-design-iconic-font.min.css');
 $page->appendCssUrl('fonts/font-awesome-4.7.0/css/font-awesome.min.css');
 $page->appendCssUrl('vendor/bootstrap/css/bootstrap.min.css');
 $page->appendJsUrl("https://code.jquery.com/jquery-3.3.1.slim.min.js");
-$page->appendJsUrl("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js");
-$page->appendJsUrl("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js");
 $page->appendJsUrl("https://code.jquery.com/jquery-3.3.1.slim.min.js");
 $page->appendJsUrl("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js");
 $page->appendJsUrl("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js");

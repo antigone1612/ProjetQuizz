@@ -1,38 +1,59 @@
-<?php 
+<?php
+
+$categorie = 0;
+if(isset($_GET["categorie"]) || !empty($_GET["categorie"])){
+    $categorie = $_GET["categorie"];
+}
+
+$all = 1;
+if(isset($_GET["all"]) || !empty($_GET["all"])){
+    $all = $_GET["all"];
+}
+
 $body = include("header.php");
+$body .= include("requettes.php");
 include "class/WebPage.class.php";
 $body .= <<<HTML
             <h4 class="justify-content-center">Page Index</h4>
             <div class="container">
                 <!--affichage des catégories -->
                 <div class="row mt-5">
-                    <div class="d-grid gap-2 mx-auto justify-content-md-end">
-                        <button class="btn btn-primary" type="button">Animaux</button>
-                        <button class="btn btn-primary" type="button">Jeux vidéo</button>
-                        <button class="btn btn-primary" type="button">Culture</button>
-                        <button class="btn btn-primary" type="button">Reptiles</button>
-                    </div>
+                    <div class="d-grid gap-5 mx-auto justify-content-md-end">
+                        <a href="index.php" style="text-decoration:none">
+                            <button class="btn btn-primary mx-1" type="button">Tout afficher</button>
+                        </a>
+HTML;
+
+foreach(recupererCategorie() as $donnee){
+    $body .= <<<HTML
+                        <a href="index.php?categorie=$donnee[IdCategorie]&all=0" style="text-decoration:none">
+                            <button class="btn btn-primary mx-1" type="button">$donnee[nom]</button>
+                        </a>
+HTML;
+}   
+
+$body .= <<<HTML
+                   </div>
                 </div>
                 <!--Affichage des quizz selon la catégorie -->
                 <div class="row mt-2">
-                    <div class="col-sm-6">
+HTML;
+
+foreach(recupererQuizzCategorie($categorie, $all) as $donnee){
+    $body .= <<<HTML
+                    <div class="col-sm-6 py-2">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Jouer !</a>
+                                <h5 class="card-title">$donnee[Titre]</h5>
+                                <p class="card-text">$donnee[Description]</p>
+                                <a href="quizz.php?id=$donnee[IdQuiz]" class="btn btn-primary">Jouer !</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Jouer !</a>
-                            </div>
-                        </div>
-                    </div>
+HTML;
+}
+
+$body .= <<<HTML
                 </div>
             </div>
         </body>

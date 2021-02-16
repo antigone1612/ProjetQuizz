@@ -13,7 +13,7 @@ $body .= <<<HTML
                     </div>
                     <div class="row">
                         <div class="col">
-                            <form method="post" action="verif_creationQuizz.php">
+                            <form method="get" action="creationQuestions.php">
                                 <div class="row ">
                                     <div class="col input-group-lg">
                                         <input type="text" class="form-control" required name="titre" placeholder="Titre">
@@ -61,8 +61,6 @@ $page->appendCssUrl('vendor/bootstrap/css/bootstrap.min.css');
 $page->appendJsUrl("https://code.jquery.com/jquery-3.3.1.slim.min.js");
 $page->appendJsUrl("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js");
 $page->appendJsUrl("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js");
-$page->appendJsUrl("https://code.jquery.com/jquery-3.3.1.slim.min.js");
-$page->appendJsUrl("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js");
 $page->appendJsUrl("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js");
 echo $page->buildPage();
 

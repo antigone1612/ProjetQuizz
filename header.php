@@ -4,7 +4,7 @@ session_start();
 $html = <<<HTML
 <nav style="background-color:  #587AB0" class="navbar navbar-expand-lg navbar-dark  fixed-top">
     <div class="container">
-        <a  style="font-size:26px;" class="navbar-brand" href="index.php">The Quizzz</a>
+        <a  style="font-size:26px;" class="navbar-brand" href="index.php">The Quizz</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         	<span class="navbar-toggler-icon"></span>
       	</button>
