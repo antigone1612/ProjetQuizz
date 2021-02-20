@@ -6,27 +6,27 @@ Toutes les données seront sauvegardées grâce à une BDD et les utilisateurs p
 
 INSTALLATION DU PROJET
 
-- La BDD
+- La BDD :
     Dans PHPMyAdmin, créez une nouvelle BDD appelée "thequizz" et sélectionnez-la.
     Cliquez ensuite sur l'onglet "Importer", sélectionnez le fichier thequizz.sql dans l'option "Choisir un fichier", puis "Exécuter".
     Cinq nouvelles tables sont alors créées dans la BDD : categories, questions, quizs, reponses, users.
 
-- Le site
+- Le site :
     Copier le dossier "TheQuizz-main" dans votre localhost.
     Pour y accéder avec votre navigateur, tapez "localhost/TheQuizz-main/index.php" dans l'url.
 
 USES CASES
 
-- Utilisateur
+- Utilisateur :
     S'authentifier
         Consulter ses informations 
         Créer de quizz
         Jouer aux quizz
 
-- Visiteur
+- Visiteur :
     Jouer aux quizz
     S'incrire
 
-- Administrateur 
+- Administrateur :
     Valider les nouveaux quizz
     Bannir les utilisateurs
