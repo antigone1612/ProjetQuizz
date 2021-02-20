@@ -67,9 +67,4 @@ class WebPage {
             </html>
 HTML;
     }
- 
-    public function setBody($body) {
-        $this->body = $body;
-        return $this;
-    }
 }
