@@ -21,12 +21,7 @@ $body .= <<<HTML
                                     <div class="col input-group-lg">
                                         <input type="text" class="form-control" required name="titre" placeholder="Titre">
                                     </div>
-
                                     <div class="col input-group-lg">
-                                        <textarea class="form-control" required name="description" placeholder="Description"></textarea>
-                                    </div>
-
-                                    <div class="col">
                                         <select name="IDcategorie" class="custom-select custom-select-lg mb-3" aria-label=".form-select-lg example">
                                         
 HTML;
@@ -43,6 +38,9 @@ HTML;
 
 $body .= <<<HTML
                                         </select>
+                                    </div>
+                                    <div class="col input-group-lg">
+                                        <textarea class="form-control" required name="description" placeholder="Description"></textarea>
                                     </div>
                                 </div>
                                 <input name="submit" style="background-color : #707782; border: none" class="btn btn-lg btn-primary btn-block marge bordure" type="submit" value="Créer">
