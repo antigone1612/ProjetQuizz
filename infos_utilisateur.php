@@ -1,27 +1,33 @@
-<?php 
+<?php
+
+//on fait nos inclusions
 $body = include("header.php");
-$body .= include("requettes.php");
+$body .= include("requetes.php");
 include "class/WebPage.class.php";
+
 //on récupère l'idUser mis en session
 $idUser = $_SESSION["IdUser"];
-//on stock les données de l'utilisateurs
+
+//on stock les données de l'utilisateur
 $donne = recupererInfosUtilisateurs($idUser)[0];
+
 //quizs joués par l'utilisateur
 $quizsJoues = $donne['QuizsJoues'];
+
 //quizs gagnés par l'utilisateur
 $quizsGagnes = $donne['QuizsGagnes'];
 $nom = $_SESSION['nom'];
-//on récupère le nrb de quizz créer par l'utilisateur
+
+//on récupère le nrb de quizz créés par l'utilisateur
 $nbrQuizz = recupererNbrQuizzUtilisateur($idUser)[0];
 $nbrQuizzCrea = $nbrQuizz['COUNT(*)'];
-var_dump($nbrQuizzCrea);
-$body .=  
-<<<HTML
+
+$body .= <<<HTML
 <div class="limiter">
 	<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 		<div class="wrap-login1002">
             <h4 class="justify-content-center"> $nom </h4>
-            <!--affichage des informations du joueurs -->
+            <!-- affichage des informations du joueur -->
             <div class="row mt-5">
                 <div class="col">
                     <ul class="list-group">
@@ -29,10 +35,12 @@ $body .=
                             Quizz joués 
                             <span class="badge bg-primary rounded-pill">$quizsJoues</span>
                         </li>
+
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Quizz gagnés
                             <span class="badge bg-primary rounded-pill">$quizsGagnes</span>
                         </li>
+
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Quizz créés
                             <span class="badge bg-primary rounded-pill">$nbrQuizzCrea</span>

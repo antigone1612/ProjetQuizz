@@ -1,44 +1,55 @@
 <?php 
+
+// on fait nos inclusions
 $body = include("header.php");
-$body .= include("requettes.php");
+$body .= include("requetes.php");
 include "class/WebPage.class.php";
+
 $body .= <<<HTML
     <div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login1003">
                 <div class="container">
-                    <!--Création dun quizz par utilisateur-->
+                    <!-- Formulaire de création d'un quizz par un utilisateur-->
                     <div class="row">
                         <h4 class="justify-content-center">Créer un Quizz</h4>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <form method="get" action="creationQuestions.php">
+                            <form method="post" action="creationQuestions.php">
                                 <div class="row ">
                                     <div class="col input-group-lg">
                                         <input type="text" class="form-control" required name="titre" placeholder="Titre">
                                     </div>
+
                                     <div class="col input-group-lg">
-                                        <input type="text" class="form-control" required name="description" placeholder="Description">
+                                        <textarea class="form-control" required name="description" placeholder="Description"></textarea>
                                     </div>
+
                                     <div class="col">
                                         <select name="IDcategorie" class="custom-select custom-select-lg mb-3" aria-label=".form-select-lg example">
                                         
 HTML;
-                                foreach(recupererCategorie() as $donnee){
-                                    $nomCategorie = $donnee["nom"];
-                                    $idCategorie = $donnee["IdCategorie"];
-$body .= <<<HTML
-                                <option  value=$idCategorie>$nomCategorie</option>
-HTML;
-                            }
-$body .= <<<HTML
-                            </select>
 
+
+//on récupère toutes les catégories existantes pour les mettre ddans le menu déroulant
+foreach(recupererCategorie() as $donnee){
+    $nomCategorie = $donnee["nom"];
+    $idCategorie = $donnee["IdCategorie"];
+    $body .= <<<HTML
+                                            <option value=$idCategorie>$nomCategorie</option>
+HTML;
+}
+
+$body .= <<<HTML
+                                        </select>
+                                    </div>
+                                </div>
+                                <input name="submit" style="background-color : #707782; border: none" class="btn btn-lg btn-primary btn-block marge bordure" type="submit" value="Créer">
+                            </form>
                         </div>
                     </div>
-                    <input name="submit" style="background-color : #707782; border: none" class="btn btn-lg btn-primary btn-block marge bordure" type="submit" value="Créer">
-                </form>
+                <div>
             </div>
         </div>
     <div>

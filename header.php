@@ -1,5 +1,8 @@
 <?php 
+
+//on démarre la session
 session_start();
+
 //Navigation
 $html = <<<HTML
 <nav style="background-color:  #587AB0" class="navbar navbar-expand-lg navbar-dark  fixed-top">
@@ -12,6 +15,7 @@ $html = <<<HTML
         	<ul class="navbar-nav ml-auto">    
 HTML;
 
+//on vérifie si un utilisateur est connecté
 if(isset($_SESSION["IdUser"])) {
     $nom = $_SESSION["nom"] ;
 	$html .= <<<HTML
@@ -26,7 +30,7 @@ if(isset($_SESSION["IdUser"])) {
                 	</div>                
             	</li>
 HTML;
-} else{
+} else {
 	$html .= <<<HTML
             	<a class="nav-link" href="connexion.php">Connexion
                 	<span class="sr-only">(current)</span>

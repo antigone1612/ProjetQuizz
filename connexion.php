@@ -1,20 +1,21 @@
 <?php 
+
+// on fait nos inclusions
 include "class/WebPage.class.php";
 $body = include("header.php"); 
-$body.= include("requettes.php");
-$body.= <<<HTML
+$body .= include("requetes.php");
 
+$body.= <<<HTML
+	<!-- Création du formulaire de connexion -->
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="post" action="connexion.php">
 					<span class="login100-form-logo">
-					<img class="form-signin-heading" width="100" src="images/image-quizz.jpg" >
+						<img class="form-signin-heading" width="100" src="images/image-quizz.jpg" >
 					</span>
 
-					<span class="login100-form-title p-b-34 p-t-27">
-						Connexion
-					</span>
+					<span class="login100-form-title p-b-34 p-t-27"> Connexion </span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input class="input100" type="email" name="mail" placeholder="Email">
@@ -25,23 +26,25 @@ $body.= <<<HTML
 						<input class="input100" type="password" name="password" placeholder="Mot de Passe">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
+
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
+						<button class="login100-form-btn"> Login </button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 	
-
 	<div id="dropDownSelect1"></div>
 HTML;
+
+//on vérifie si les données ont été renseignées 
 if(isset($_POST['mail']) && isset($_POST['password']) && !empty($_POST['mail']) && !empty($_POST['password'])) {
+	//on vérifie si les données correspondent à celles présentes en BDD
 	foreach (recupererUtilisateur($_POST['mail']) as $donnee){
-    	//on utilise password_verify pour comparer les hashs , celui du mot de pass saisie pour se connecter et celui en BDD
+    	//on utilise password_verify pour comparer les hashs, celui du mot de passe saisi pour se connecter et celui en BDD
 		if (($_POST['mail'] == $donnee["Mail"]) && (password_verify($_POST['password'],$donnee["MotDePasse"]) )){
+			//on lance la session
 			session_start();
 			$_SESSION["IdUser"] = $donnee["IdUser"];
 			$_SESSION["nom"] = $donnee["Prenom"];
@@ -49,17 +52,7 @@ if(isset($_POST['mail']) && isset($_POST['password']) && !empty($_POST['mail']) 
 			exit();
 		}
 	}
-} else {
-	echo "Veuillez remplir correctement les logins";
-}         
-$body .= <<<HTML
-                </form>
-          	</div>
-        </div>
-    </section>
-HTML;
-
-
+}        
 
 //génère l'affichage
 $page = new WebPage("Connexion");

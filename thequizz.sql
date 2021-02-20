@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 15 fév. 2021 à 21:40
+-- Généré le :  sam. 20 fév. 2021 à 12:42
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -67,7 +67,7 @@ INSERT INTO `questions` (`IdQuestion`, `IdQuiz`, `Question`, `IdBonneReponse`) V
 (1, 1, 'Qui est la mascotte ?', 2),
 (2, 1, 'Comment affiche t-on le contenu d\'une variable ?', 6),
 (3, 1, 'Les fichiers php ont l\'extension ... ', 11),
-(4, 1, 'Un script doit commencer par ...?', 16),
+(4, 1, 'Quelle fonction retourne la longueur d\'une chaîne de texte ?', 16),
 (5, 2, 'Où peut-on trouver le panda ?', 17),
 (6, 2, 'Les chauves-souris dorment ----.', 22),
 (7, 2, 'Les souris mangent ----.', 26),
@@ -95,8 +95,7 @@ CREATE TABLE IF NOT EXISTS `quizs` (
 
 INSERT INTO `quizs` (`IdQuiz`, `Titre`, `IdCategorie`, `Description`, `IdUser`) VALUES
 (1, 'PHP', 2, 'Le connaissez vous vraiment ?', 3),
-(2, 'Généralités des animaux', 1, 'Un quizz compet pour les passionés', 3),
-(4, 'Les jeans', 3, 'Un quizz sur les jeans pour les experts ', 8);
+(2, 'Généralités des animaux', 1, 'Un quizz complet pour les passionnés', 3);
 
 -- --------------------------------------------------------
 
@@ -120,23 +119,23 @@ INSERT INTO `reponses` (`IdReponse`, `IdQuestion`, `Reponse`) VALUES
 (1, 1, 'Une souris '),
 (2, 1, 'Un éléphant'),
 (3, 1, 'Un chien'),
-(4, 1, 'Une giraffe'),
+(4, 1, 'Une girafe'),
 (5, 2, 'echo'),
 (6, 2, 'var_dump'),
-(7, 2, 'systemOutPrint'),
+(7, 2, 'system.out.print'),
 (8, 2, 'afficher()'),
 (9, 3, '.txt'),
 (10, 3, '.html'),
 (11, 3, '.php'),
 (12, 3, '.py'),
-(13, 4, '<php'),
-(14, 4, '<?'),
-(15, 4, 'php'),
-(16, 4, '<?php'),
+(13, 4, 'substr'),
+(14, 4, 'length '),
+(15, 4, 'strlength'),
+(16, 4, 'strlen '),
 (17, 5, 'En Chine'),
 (18, 5, 'En Afrique'),
 (19, 5, 'En France'),
-(20, 5, 'En Amerique'),
+(20, 5, 'En Amérique'),
 (21, 6, 'La nuit'),
 (22, 6, 'Le jour'),
 (23, 6, 'Jamais'),
@@ -144,7 +143,7 @@ INSERT INTO `reponses` (`IdReponse`, `IdQuestion`, `Reponse`) VALUES
 (25, 7, 'Des fraises'),
 (26, 7, 'Du fromage'),
 (27, 7, 'Des haricots'),
-(28, 7, 'Des pattates'),
+(28, 7, 'Des patates'),
 (29, 8, 'rayures'),
 (30, 8, 'points'),
 (31, 8, 'taches'),

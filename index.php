@@ -1,66 +1,79 @@
 <?php
 
+//id de la categorie à afficher
 $categorie = 0;
-if(isset($_GET["categorie"]) || !empty($_GET["categorie"])){
-    $categorie = $_GET["categorie"];
+if(isset($_POST["categorie"]) || !empty($_POST["categorie"])){
+    $categorie = $_POST["categorie"];
 }
 
+//variable permettant d'afficher toutes les catégories
 $all = 1;
-if(isset($_GET["all"]) || !empty($_GET["all"])){
-    $all = $_GET["all"];
+if(isset($_POST["all"]) || !empty($_POST["all"])){
+    $all = $_POST["all"];
 }
 
-$body = include("header.php");
-$body .= include("requettes.php");
+//on fait nos inclusions
 include "class/WebPage.class.php";
+$body = include("header.php");
+$body .= include("requetes.php");
+
 $body .= <<<HTML
-            <h4 class="justify-content-center">Page Index</h4>
-            <div class="container">
-                <!--affichage des catégories -->
-                <div class="row mt-5">
-                    <div class="d-grid gap-5 mx-auto justify-content-md-end">
-                        <a href="index.php" style="text-decoration:none">
-                            <button class="btn btn-primary mx-1" type="button">Tout afficher</button>
-                        </a>
+        <br><br>
+        <div class="container">
+            <div class="row mt-5">
+                <div class="d-grid gap-5 mx-auto justify-content-md-end">
+                    <!-- affichage de la catégorie "Tout Afficher" -->
+                    <a href="index.php" style="text-decoration:none">
+                        <button class="btn btn-primary mx-1" type="button">Tout afficher</button>
+                    </a>
 HTML;
 
 foreach(recupererCategorie() as $donnee){
     $body .= <<<HTML
-                        <a href="index.php?categorie=$donnee[IdCategorie]&all=0" style="text-decoration:none">
-                            <button class="btn btn-primary mx-1" type="button">$donnee[nom]</button>
-                        </a>
+                    <!-- affichage de chaque catégorie -->
+                    <form style="display: none" id="categorie$donnee[IdCategorie]" action="index.php" method="post">
+                        <input type="hidden" name="categorie" value="$donnee[IdCategorie]"/>
+                        <input type="hidden" name="all" value="0"/>
+                    </form>
+                    <a href='#' onclick='document.getElementById("categorie$donnee[IdCategorie]").submit()' style="text-decoration: none">
+                        <button class="btn btn-primary mx-1" type="button">$donnee[nom]</button>
+                    </a>
 HTML;
 }   
 
 $body .= <<<HTML
-                   </div>
                 </div>
-                <!--Affichage des quizz selon la catégorie -->
-                <div class="row mt-2">
+            </div>
+            <div class="row mt-2">
 HTML;
+
 
 foreach(recupererQuizzCategorie($categorie, $all) as $donnee){
     $body .= <<<HTML
-                    <div class="col-sm-6 py-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">$donnee[Titre]</h5>
-                                <p class="card-text">$donnee[Description]</p>
-                                <a href="quizz.php?id=$donnee[IdQuiz]" class="btn btn-primary">Jouer !</a>
-                            </div>
+                <!-- Affichage des quizz selon la catégorie -->
+                <div class="col-sm-6 py-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">$donnee[Titre]</h5>
+                            <p class="card-text">$donnee[Description]</p>
+                            <form style="display: none" id="quizz$donnee[IdQuiz]" action="quizz.php" method="post">
+                                <input type="hidden" name="id" value="$donnee[IdQuiz]"/>
+                            </form>
+                            <a href='#' onclick='document.getElementById("quizz$donnee[IdQuiz]").submit()' class="btn btn-primary">Jouer !</a>
                         </div>
                     </div>
+                </div>
 HTML;
 }
 
 $body .= <<<HTML
-                </div>
             </div>
-        </body>
-    </html>
+        </div>
+    </body>
+</html>
 HTML;
 
-//génère l'affichage
+// génère l'affichage
 $page = new WebPage("Quizzz");
 $page->appendContent($body);
 $page->appendJsUrl("https://code.jquery.com/jquery-3.3.1.slim.min.js");

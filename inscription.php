@@ -1,59 +1,54 @@
-<?php 
+<?php
+
+//on fait nos inclusions
 include "class/WebPage.class.php";
 $body = include("header.php"); 
-$body.= include("requettes.php");
-$body.= <<<HTML
-
-	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form"  method="post" action="verif_inscription.php">
-					<span class="login100-form-logo">
-					<img class="form-signin-heading" width="100" src="images/image-quizz.jpg" >
-					</span>
-					<span class="login100-form-title p-b-34 p-t-27">
-						Inscription
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Entrez Prenom">
-						<input class="input100" type="text" name="prenom" placeholder="Prenom">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-          <div class="wrap-input100 validate-input" data-validate="Entrez Nom">
-						<input class="input100" type="text" name="nom" placeholder="Nom">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate="Entrez mot de passe">
-						<input class="input100" type="password" name="password" placeholder="Mot de Passe">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-					</div>
-                    <div class="wrap-input100 validate-input" data-validate = "Entrez Email">
-						<input class="input100" type="email" name="mail" placeholder="Email">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							S'inscrire
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-
-	<div id="dropDownSelect1"></div>
-HTML;
+$body .= include("requetes.php");
 
 $body .= <<<HTML
-                </form>
-          	</div>
-        </div>
-    </section>
+<div class="limiter">
+	<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="wrap-login100">
+			<!-- Formulaire d'inscription -->
+			<form class="login100-form validate-form"  method="post" action="verif_inscription.php">
+				<span class="login100-form-logo">
+					<img class="form-signin-heading" width="100" src="images/image-quizz.jpg" >
+				</span>
+
+				<span class="login100-form-title p-b-34 p-t-27">
+					Inscription
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate = "Entrez Prenom">
+					<input class="input100" type="text" name="prenom" placeholder="Prenom">
+					<span class="focus-input100" data-placeholder="&#xf207;"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Entrez Nom">
+					<input class="input100" type="text" name="nom" placeholder="Nom">
+					<span class="focus-input100" data-placeholder="&#xf207;"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Entrez mot de passe">
+					<input class="input100" type="password" name="password" placeholder="Mot de Passe">
+					<span class="focus-input100" data-placeholder="&#xf191;"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Entrez Email">
+					<input class="input100" type="email" name="mail" placeholder="Email">
+					<span class="focus-input100" data-placeholder="&#xf207;"></span>
+				</div>
+
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn"> S'inscrire </button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="dropDownSelect1"></div>
 HTML;
-
-
 
 //génère l'affichage
 $page = new WebPage("Inscription");
