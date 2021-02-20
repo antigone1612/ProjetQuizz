@@ -12,7 +12,7 @@ INSTALLATION DU PROJET
     Cinq nouvelles tables sont alors créées dans la BDD : categories, questions, quizs, reponses, users.
 
 - Le site
-    Copier le dossier "TheQuizz" dans votre localhost.
+    Copier le dossier "TheQuizz-main" dans votre localhost.
     Pour y accéder avec votre navigateur, tapez "localhost/TheQuizz-main/index.php" dans l'url.
 
 USES CASES
