@@ -13,7 +13,7 @@ INSTALLATION DU PROJET
 
 - Le site
     Copier le dossier "TheQuizz" dans votre localhost.
-    Pour y accéder avec votre navigateur, tapez "localhost/TheQuizz/index.php" dans l'url.
+    Pour y accéder avec votre navigateur, tapez "localhost/TheQuizz-main/index.php" dans l'url.
 
 USES CASES
 
